@@ -354,7 +354,7 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> add New Student</a></li>
+                        <li><a href="{{ route('addNewStudent') }}"><i class="fa fa-circle-o"></i> add New Student</a></li>
                         <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
                     </ul>
                 </li>

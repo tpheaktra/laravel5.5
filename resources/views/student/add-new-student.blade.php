@@ -62,8 +62,10 @@
                                         <div>
                                             <label for="exampleInputEmail1">Gender</label>
                                         </div>
-                                        <span><input type="radio" name="gender" checked> Male &nbsp;&nbsp;</span>
-                                        <span><input type="radio" name="gender"> Female</span>
+                                        @foreach($gender as $key => $value)
+                                            <span><input value="{{$value->id}}" type="radio" name="gender" checked> {{$value->gender}} &nbsp;&nbsp;</span>
+                                        @endforeach
+
                                     </div>
                                 </div>
 
