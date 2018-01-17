@@ -27,33 +27,34 @@
 
 
                         <!-- form start -->
-                        <form role="form">
+                        <form role="form" method="post" action="{{ route('PostInsertStudent') }}">
+                            {{ csrf_field() }}
                             <div class="box-body">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Full Name Khmer</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Full Name in khmer">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Full Name in khmer" name="name_khmer">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Full Name Latin</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="name_latin">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Phone Number</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter phone number">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter phone number" name="phone_number">
                                     </div>
                                 </div>
 
@@ -74,8 +75,9 @@
                                         <div>
                                             <label for="exampleInputEmail1">RelationShip</label>
                                         </div>
-                                        <span><input type="radio" name="relationship" checked> Single &nbsp;&nbsp;</span>
-                                        <span><input type="radio" name="relationship"> Married</span>
+                                        @foreach($relationship as $key => $value)
+                                        <span><input type="radio" name="relationship" value="{{$value->id}}"> {{ $value->relationship }} &nbsp;&nbsp;</span>
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -88,7 +90,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker">
+                                            <input type="text" class="form-control pull-right" id="datepicker" name="date_of_birth">
                                         </div>
                                         <!-- /.input group -->
                                     </div>
@@ -98,26 +100,34 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Nationality</label>
-                                        <select class="form-control select2" style="width: 100%;">
-                                            <option selected="selected">Khmer</option>
-                                            <option>Cham</option>
-                                            <option>Kuy</option>
+                                        <select class="form-control select2" style="width: 100%;" name="nationality">
+                                            @foreach($nationality as $key => $value)
+                                            <option value="{{$value->id}}">{{$value->nationality}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
 
 
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Address</h3>
+
+
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Address</h3>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <!-- /.box-header -->
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Provinces</label>
-                                        <select class="form-control select2" style="width: 100%;">
+                                        <select class="form-control select2" style="width: 100%;" name="province_id">
                                             <option>------please select------</option>
-                                            <option>Cham</option>
+                                            <option value="1">Cham</option>
                                             <option>Kuy</option>
                                         </select>
                                     </div>
@@ -126,9 +136,9 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>District</label>
-                                        <select class="form-control select2" style="width: 100%;">
+                                        <select class="form-control select2" style="width: 100%;" name="district_id">
                                             <option>------please select------</option>
-                                            <option>Cham</option>
+                                            <option value="1">Cham</option>
                                             <option>Kuy</option>
                                         </select>
                                     </div>
@@ -137,9 +147,9 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Commune</label>
-                                        <select class="form-control select2" style="width: 100%;">
+                                        <select class="form-control select2" style="width: 100%;" name="commune_id">
                                             <option>------please select------</option>
-                                            <option>Cham</option>
+                                            <option value="1">Cham</option>
                                             <option>Kuy</option>
                                         </select>
                                     </div>
@@ -148,9 +158,9 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Village</label>
-                                        <select class="form-control select2" style="width: 100%;">
+                                        <select class="form-control select2" style="width: 100%;" name="village_id">
                                             <option>------please select------</option>
-                                            <option>Cham</option>
+                                            <option value="1">Cham</option>
                                             <option>Kuy</option>
                                         </select>
                                     </div>
@@ -159,12 +169,12 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Current Address Study</label>
-                                        <textarea class="form-control" placeholder="Enter current address"></textarea>
+                                        <textarea class="form-control" placeholder="Enter current address" name="address"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="footer col-sm-12"><hr>
-                                    <button class="btn btn-default">Register</button>
+                                    <button type="submit" class="btn btn-default">Register</button>
                                     <button class="btn btn-default pull-right">Reset</button>
                                 </div>
                             </div>

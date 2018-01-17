@@ -39,6 +39,10 @@
     <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <!-- datepicker -->
     <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }} "></script>
+    <!-- Select2 -->
+
+    <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}">
+    <script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -605,5 +609,11 @@
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
+<script>
+    $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+        });
+    </script>
 </body>
 </html>

@@ -55,4 +55,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 ========================================================*/
 
 Route::get('/add-new-student',['as'=>'addNewStudent','uses'=>'StudentController@addNewStudent']);
+Route::POST('/save-student',['as'=>'PostInsertStudent','uses'=>'StudentController@PostInsertStudent']);
 
