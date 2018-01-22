@@ -125,46 +125,125 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Provinces</label>
-                                        <select class="form-control select2" style="width: 100%;" name="province_id">
+                                        <select class="form-control select2" style="width: 100%;" name="province_id" id="province_id">
                                             <option>------please select------</option>
-                                            <option value="1">Cham</option>
-                                            <option>Kuy</option>
+                                            @foreach($province as $key => $value)
+                                                <option value="{{ $value->procode}}">{{$value->PROVINCE}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                <script type="text/javascript">
+                                    $('#province_id').on('change', function(e){
+                                          var provinceID = $('#province_id').val();
+                                         // alert(provinceID);
+                                          $.ajax({
+                                            type: 'GET',
+                                            url: "{{ route('GetDistrict') }}",
+                                            data: {'province_id': provinceID},
+                                            success: function (data) {
+                                                // console.log(data);
+                                                var obj = JSON.parse(data);
+
+                                                $("#district_id").empty();
+                                                $("#district_id").append('<option selected="selected">-----Please select-----</option>');
+                                                $.each(obj, function (index, element) {
+                                                    $("#district_id").append(new Option(element.DName_en, element.DCode));
+                                                });
+                                            },
+                                            error: function (report){
+                                                console.log(report);
+                                            }
+                                        });
+                                    });
+                                </script>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>District</label>
-                                        <select class="form-control select2" style="width: 100%;" name="district_id">
+                                        <select class="form-control select2" style="width: 100%;" name="district_id" id="district_id">
                                             <option>------please select------</option>
-                                            <option value="1">Cham</option>
-                                            <option>Kuy</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
+
+                                <script type="text/javascript">
+                                    $('#district_id').on('change', function(e){
+                                          var districtID = $('#district_id').val();
+                                         // alert(districtID);
+                                          $.ajax({
+                                            type: 'GET',
+                                            url: "{{ route('GetCommune') }}",
+                                            data: {'district_id': districtID},
+                                            success: function (data) {
+                                                // console.log(data);
+                                                var obj = JSON.parse(data);
+
+                                                $("#commune_id").empty();
+                                                $("#commune_id").append('<option selected="selected">-----Please select-----</option>');
+                                                $.each(obj, function (index, element) {
+                                                    $("#commune_id").append(new Option(element.CName_en, element.CCode));
+                                                });
+                                            },
+                                            error: function (report){
+                                                console.log(report);
+                                            }
+                                        });
+                                    });
+                                </script>
+
+
+
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Commune</label>
-                                        <select class="form-control select2" style="width: 100%;" name="commune_id">
+                                        <select class="form-control select2" style="width: 100%;" name="commune_id" id="commune_id">
                                             <option>------please select------</option>
-                                            <option value="1">Cham</option>
-                                            <option>Kuy</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
+                                <script type="text/javascript">
+                                    $('#commune_id').on('change', function(e){
+                                          var CommuneID = $('#commune_id').val();
+                                         // alert(CommuneID);
+                                          $.ajax({
+                                            type: 'GET',
+                                            url: "{{ route('GetVillage') }}",
+                                            data: {'commune_id': CommuneID},
+                                            success: function (data) {
+                                                // console.log(data);
+                                                var obj = JSON.parse(data);
+                                               // alert(obj);
+
+                                                $("#village_id").empty();
+                                                $("#village_id").append('<option selected="selected">-----Please select-----</option>');
+                                                $.each(obj, function (index, element) {
+                                                    $("#village_id").append(new Option(element.VName_en, element.VCode));
+                                                });
+                                            },
+                                            error: function (report){
+                                                console.log(report);
+                                            }
+                                        });
+                                    });
+                                </script>
+
+
+
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Village</label>
-                                        <select class="form-control select2" style="width: 100%;" name="village_id">
+                                        <select class="form-control select2" style="width: 100%;" name="village_id" id="village_id">
                                             <option>------please select------</option>
-                                            <option value="1">Cham</option>
-                                            <option>Kuy</option>
+                                           
                                         </select>
                                     </div>
                                 </div>
+                                 
 
                                 <div class="col-sm-12">
                                     <div class="form-group">

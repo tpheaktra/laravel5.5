@@ -56,4 +56,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/add-new-student',['as'=>'addNewStudent','uses'=>'StudentController@addNewStudent']);
 Route::POST('/save-student',['as'=>'PostInsertStudent','uses'=>'StudentController@PostInsertStudent']);
+/*ajax */
+Route::GET('GetDistrict',['as'=>'GetDistrict','uses'=>'StudentController@GetDistrict']);
+Route::GET('GetCommune',['as'=>'GetCommune','uses'=>'StudentController@GetCommune']);
+
+
+Route::GET('GetVillage',['as'=>'GetVillage','uses'=>'StudentController@GetVillage']);
+
+
 
